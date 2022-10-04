@@ -1,0 +1,55 @@
+Note:
+we can have only one res.send in a file, but can have multiple res.write().
+So suppose in order to send multiple h1 tags we can use multiple res.writes and
+then finally a res.send();
+
+but its tiresome to everytime write res.write res.write...
+what if we have a big HTML form page?
+
+to deal with that, we use res.sendFile(__dirname + "/index.html");
+
+this will take the file from the directory of any computer in the world and show
+us the HTML page.
+
+but now what if we have got several answers to our logic in JS?
+suppose we wanted our page to react differently on all the 7 days of the week..
+Do we really need to make 7 HTML pages?
+NO!
+Instead what we can do it templating just like there is the boiler plate code for
+any language we can make on according to our needs....
+
+we create a views folder and in it we make our first list.ejs file.
+Its the same as HTML but has <%= => tags inside which we can write our variables.
+
+in the js file,
+we write res.render("<ejs file>",{<key in ejs> : <variable in js file>});
+
+to add JS code in EJS use the scriplet tag ie the <% %> tag..
+remember, that every line of JS will require this tag.
+
+head over to https://ejs.co/ to know more..
+
+considering the scope of a variable, it is advisable to always use let over var.
+
+in order to use CSS with express, it does not automatically load up the css file.
+what we need to do is create a public folder, and in that put our css file.
+After thats done, in our app.js we write app.use(express.static("public"));
+
+logic for the different work list:
+so the problem arising was that the submit button was redirecting back to the home page as the action 
+was = "/"..
+
+to tackle the problem what we did was to name the button as list and set the value dynamically
+value = <%= listTitle %> which was work list for the different page.
+
+hence when the req.body.list === "work" we appended the item to the new works array list and redirected
+to the /work page.
+
+Layouts:
+
+Most websites have constant styling throughout their page.
+This is to maintain the readability and flow of the user.
+to acheive this, we can create a different ejs file called say header.ejs and footer.ejs and in it apply the header and footer
+
+eg in the main list.ejs file, we add <%- include("header") -%> and <%- include("footer") -%>.
+the same thing we add in about.ejs and hence we acheive the same styling. 
