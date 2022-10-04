@@ -174,10 +174,7 @@ app.get("/about",function(req,res){
 })
 
 
-let port = process.env.PORT;
-if(port==NULL || port==""){
-    port == 3000;
-}
-app.listen(port,function(){
+
+app.listen(3000,function(){
     console.log("Server is up and running at port 3000");
 })
