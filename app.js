@@ -174,7 +174,7 @@ app.get("/about",function(req,res){
 })
 
 
-
-app.listen(3000,function(){
+let port = process.env.PORT;
+app.listen(port,function(){
     console.log("Server is up and running at port 3000");
 })
